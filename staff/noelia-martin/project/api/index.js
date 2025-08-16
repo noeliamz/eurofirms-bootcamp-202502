@@ -2,7 +2,8 @@ import express from 'express'
 import cors from 'cors'
 import { connect } from './data/index.js'
 
-import { userRouter } from './routes/userRouter.js'
+import { usersRouter } from './routes/usersRouter.js'
+import { childrenRouter } from './routes/childrenRouter.js'
 
 import { errorHandler } from './middlewares/errorHandler.js'
 
@@ -19,15 +20,12 @@ connect(MONGO_URL)
         api.get('/', (request, response) => {
             response.send('Hello! API here 😉')
         })
-        api.use('/user', userRouter)
+        api.use('/users', usersRouter)
+        api.use('/children', childrenRouter)
 
+        api.use(errorHandler)
 
-        api.use(errorHandler) //Indicamos a la api que utilice el manejador de errores que contiene esa constante
-
-        //api.listen(PORT, () => console.log('API listening on port ' + PORT))
         api.listen(PORT, () => console.log(`API listening on port ${PORT}`))
 
     })
     .catch(error => console.error(error))
-
-//Borramos jsonBodyPars

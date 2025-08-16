@@ -7,7 +7,7 @@ export const registerUser = (username, password, name, healthCareNumber, dateOfB
     validate.healthCareNumber(healthCareNumber)
     validate.dateOfBirth(dateOfBirth)
 
-    return fetch(import.meta.env.VITE_API_URL + '/user', {
+    return fetch(import.meta.env.VITE_API_URL + '/users', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

@@ -1,1 +1,4 @@
-curl -X POST -H 'Content-Type: application/json' -d '{"name":"Oscar Molero Martin","username":"oscarmoleromartin","password":"123123123","healthCareNumber":"AN123456888","dateOfBirth":"08/07/2025"}' http://localhost:8080/user -v
+#   curl -X POST -H 'Content-Type: application/json' -d '{"name":"MiniOscar","username":"oscar","password":"123123123","healthCareNumber":"AN123456789","dateOfBirth":"08/07/2025"}' http://localhost:8080/users -v
+#  curl -X POST -H 'Content-Type: application/json' -d '{"name":"MiniLucas","username":"lucas","password":"123123123","healthCareNumber":"AN123456788","dateOfBirth":"09/05/2022"}' http://localhost:8080/users -v
+#  curl -X POST -H 'Content-Type: application/json' -d '{"name":"DoctorDavid","username":"david","password":"123123123","healthCareNumber":"AN123456780","dateOfBirth":"09/01/1997"}' http://localhost:8080/users -v
+    curl -X POST -H 'Content-Type: application/json' -d '{"name":"DoctoraNoelia","username":"noelia","password":"123123123","healthCareNumber":"AN123456781","dateOfBirth":"05/08/1997"}' http://localhost:8080/users -v

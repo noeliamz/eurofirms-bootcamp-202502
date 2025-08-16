@@ -1,1 +1,1 @@
-curl "http://localhost:8080/user/self/choosePacient?healthCareNumber=AN123456789" -v
+curl "http://localhost:8080/users/self/choosePacient?healthCareNumber=AN123456789" -v

@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs'
 
-import { User } from '../data/index.js'
+import { User, Child } from '../data/index.js'
 import { validate, SystemError, DuplicityError } from 'com'
 
 export const registerUser = (username, password, name, healthCareNumber, dateOfBirth) => {
@@ -18,6 +18,17 @@ export const registerUser = (username, password, name, healthCareNumber, dateOfB
                 .catch(error => {
                     if (error.code === 11000) throw new DuplicityError('user already exists') //
 
+                    throw new SystemError('mongo error')
+                })
+        })
+        .then(user => {
+            // Creo el child asociado al nuevo usuario
+            return Child.create({
+                idPacient: [user._id],
+                // pacient: { name: '', surnames: '', birthdate: null, address: '', healthCareNumber: '' },
+                // doctor: { pregnancyDuration: '', controlledPregnancy: '', maternalSerology: '', problemsDuringPregnancy: '' }
+            })
+                .catch(error => {
                     throw new SystemError('mongo error')
                 })
                 .then(() => { })

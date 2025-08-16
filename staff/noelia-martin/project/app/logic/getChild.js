@@ -1,13 +1,11 @@
-import { validate, SystemError, errors } from 'com'
 import { data } from '../data'
+import { SystemError, errors } from 'com'
 
-export const getChoosePacient = (healthCareNumber) => {
-    validate.healthCareNumber(healthCareNumber)
-
-    return fetch(import.meta.env.VITE_API_URL + '/users/self/choosePacient?healthCareNumber=' + healthCareNumber, {
+export const getChild = (token = data.getToken()) => { //si no se indica valor, coge por defecto el data.getToken()
+    return fetch(import.meta.env.VITE_API_URL + '/children', {
         method: 'GET',
         headers: {
-            Authorization: 'Bearer ' + data.getToken()
+            Authorization: 'Bearer ' + token
         }
     })
         .catch(error => { throw new SystemError('connection error') })
@@ -17,16 +15,12 @@ export const getChoosePacient = (healthCareNumber) => {
             if (status === 200)
                 return response.json()
                     .catch(error => { throw new SystemError('json error') })
-                    .then(token => {
-                        data.idPacient = token
-                        return token
-                    })
+                    .then(child => child)
 
             return response.json()
                 .catch(error => { throw new SystemError('json error') })
                 .then(body => {
                     const { error, message } = body
-
                     const constructor = errors[error] || SystemError
                     throw new constructor(message)
                 })

@@ -7,9 +7,9 @@ import jwt from 'jsonwebtoken'
 const { JWT_SECRET } = process.env
 
 
-export const userRouter = Router()
+export const usersRouter = Router()
 
-userRouter.post('/', jsonBodyParser, (request, response, next) => {
+usersRouter.post('/', jsonBodyParser, (request, response, next) => {
     try {
         const { username, password, name, healthCareNumber, dateOfBirth } = request.body
 
@@ -20,7 +20,7 @@ userRouter.post('/', jsonBodyParser, (request, response, next) => {
         next(error)
     }
 })
-userRouter.post('/auth', jsonBodyParser, (request, response, next) => {
+usersRouter.post('/auth', jsonBodyParser, (request, response, next) => {
     try {
         const { username, password } = request.body
 
@@ -28,8 +28,6 @@ userRouter.post('/auth', jsonBodyParser, (request, response, next) => {
             .then(user => {
                 const token = jwt.sign({ sub: user.id, role: user.role }, JWT_SECRET)
                 response.status(200).json(token)
-                // const token = { sub: user.id, role: user.role }
-                // response.status(200).json(token)
             })
             .catch(error => next(error))
 
@@ -38,7 +36,7 @@ userRouter.post('/auth', jsonBodyParser, (request, response, next) => {
     }
 })
 
-userRouter.get('/self/namePacient', (request, response, next) => {
+usersRouter.get('/self/namePacient', (request, response, next) => {
     try {
         const authorization = request.headers.authorization
 
@@ -54,7 +52,7 @@ userRouter.get('/self/namePacient', (request, response, next) => {
         next(error)
     }
 })
-userRouter.get('/self/choosePacient', (request, response, next) => {
+usersRouter.get('/self/choosePacient', (request, response, next) => {
     try {
         const healthCareNumber = request.query.healthCareNumber
 

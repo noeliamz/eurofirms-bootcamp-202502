@@ -35,125 +35,103 @@ const user = new Schema({
     role: {
         type: String,
         required: true,
-        enum: ['regular', 'doctor'],
-        default: 'regular'
+        enum: ['pacient', 'doctor'],
+        default: 'pacient'
     }
 })
 
 const child = new Schema({
-    parents: [{
+    idPacient: [{ //id del niño que almacenará información
         type: ObjectId,
         ref: 'User',
         required: true
     }],
-    name: {
-        type: String
+    pacient: {
+        name: {
+            type: String
+        },
+        surnames: {
+            type: String
+        },
+        birthdate: {
+            type: String
+        },
+        address: {
+            type: String
+        },
+        healthCenterName: {
+            type: String
+        },
+        healthCenterTfno: {
+            type: String,
+        },
+        healthPediatricianName: {
+            type: String
+        },
+        healthPediatricianTfno: {
+            type: String
+        },
+        healthHospitalName: {
+            type: String
+        },
+        healthHospitalTfno: {
+            type: String
+        },
+        healthEmergenciesName: {
+            type: String
+        },
+        healthEmergenciesTfno: {
+            type: String
+        }
     },
-    surnames: {
-        type: String
-    },
-    birthdate: {
-        type: Date
-    },
-    address: {
-        type: String
-    },
-    healthCenterName: {
-        type: String
-    },
-    healthCenterTfno: {
-        type: String
-    },
-    healthPediatricianName: {
-        type: String
-    },
-    healthPediatricianTfno: {
-        type: String
-    },
-    healthHospitalName: {
-        type: String
-    },
-    healthHospitalTfno: {
-        type: String
-    },
-    healthEmergenciesName: {
-        type: String
-    },
-    healthEmergenciesTfno: {
-        type: String
-    },
-    pregnancyDuration: {
-        type: String
-    },
-    controlledPregnancy: {
-        type: String
-    },
-    maternalSerology: {
-        type: String
-    },
-    problemsDuringPregnancy: {
-        type: String
-    },
-    birthPlace: {
-        type: String
-    },
-    entryDateBirth: {
-        type: String
-    },
-    departureDateBirth: {
-        type: String
-    },
-    typeOfBirth: {
-        type: String
-    },
-    earlyBreastfeelingInTheDeliveryRoom: {
-        type: String
-    },
-    childbirthIncidentschildbirth: {
-        type: String
-    },
-    birthWeight: {
-        type: String
-    },
-    sex: {
-        type: String
-    },
-    birthLenght: {
-        type: String
-    },
-    cephalicPerimeterAtBirth: {
-        type: String
-    },
-    allergiesAndReactionsToDrugsOrVaccines: {
-        type: String
-    },
-    bloodGroup: {
-        type: String
-    },
-    foodIntolerances: {
-        type: String
-    },
-    chronicDiaseases: {
-        type: String
-    },
-    continuedMedication: {
-        type: String
-    },
-    familyHistory: {
-        type: String
-    },
-    congenitalMetabolicDiaseases: {
-        type: String
-    },
-    breastfed: {
-        type: String
-    },
-    exclusiveBreastDuration: {
-        type: String
-    },
-    stopBreastfeeding: {
-        type: String
-    },
+
+    doctor: {
+        pregnancyDuration: {
+            type: String
+        },
+        controlledPregnancy: {
+            type: String
+        },
+        maternalSerology: {
+            type: String
+        },
+        problemsDuringPregnancy: {
+            type: String
+        },
+        birthPlace: {
+            type: String
+        },
+        entryDateBirth: {
+            type: String
+        },
+        departureDateBirth: {
+            type: String
+        },
+        typeOfBirth: {
+            type: String
+        },
+        earlyBreastfeelingInTheDeliveryRoom: {
+            type: String
+        },
+        childbirthIncidentschildbirth: {
+            type: String
+        },
+        birthWeight: {
+            type: String
+        },
+        sex: {
+            type: String
+        },
+        birthLenght: {
+            type: String
+        },
+        cephalicPerimeterAtBirth: {
+            type: String
+        },
+        bloodGroup: {
+            type: String
+        },
+    }
 })
 
 
