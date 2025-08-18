@@ -1,4 +1,4 @@
-import { AuthorshipError, CredentialsError, DuplicityError, NotFoundError, SystemError, ValidationError, AuthorizationError } from 'com'
+import { CredentialsError, DuplicityError, NotFoundError, SystemError, ValidationError, AuthorizationError } from 'com'
 
 import jwt from 'jsonwebtoken'
 const { JsonWebTokenError } = jwt
@@ -12,8 +12,6 @@ export const errorHandler = (error, request, response, next) => {
         status = 404
     else if (error instanceof CredentialsError)
         status = 401
-    else if (error instanceof AuthorshipError)
-        status = 403
     else if (error instanceof DuplicityError)
         status = 409
     else if (error instanceof JsonWebTokenError) {

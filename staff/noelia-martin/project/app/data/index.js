@@ -9,5 +9,5 @@ export const data = {
     removeToken() {
         delete sessionStorage.token
     },
-    idPacient: null //almacenará en memoria volatil el toke que contiene el id del paciente con el que el doctor está trabajando
+    idPacient: null //almacenará en memoria volatil el token que contiene el id del paciente con el que el doctor está trabajando
 }

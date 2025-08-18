@@ -28,4 +28,4 @@ connect(MONGO_URL)
         api.listen(PORT, () => console.log(`API listening on port ${PORT}`))
 
     })
-    .catch(error => console.error(error))
+    .catch(error => console.error(error.message))

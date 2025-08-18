@@ -1,7 +1,8 @@
 import { data } from '../data'
-import { SystemError, errors } from 'com'
+import { SystemError, errors, validate } from 'com'
 
 export const getChild = (token = data.getToken()) => { //si no se indica valor, coge por defecto el data.getToken()
+
     return fetch(import.meta.env.VITE_API_URL + '/children', {
         method: 'GET',
         headers: {

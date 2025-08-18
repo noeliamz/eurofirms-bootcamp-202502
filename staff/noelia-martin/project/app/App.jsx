@@ -47,7 +47,7 @@ export const App = () => {
     try {
         loggedIn = logic.isUserLoggedIn()
     } catch (error) {
-        console.error(error)
+        console.error(error.message)
         alert(error.mensage)
     }
 

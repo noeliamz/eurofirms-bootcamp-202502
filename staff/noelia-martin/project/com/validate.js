@@ -34,16 +34,17 @@ export const validate = {
         if (typeof dateOfBirth !== 'string') throw new ValidationError('invalid dateOfBirth type')
         if (dateOfBirth.length !== 10) throw new ValidationError('invalid dateOfBirth length dd/mm/yyyy')
     },
-    /*
-        password(password) {
-            if (typeof password !== 'string') throw new ValidationError('invalid password type')
-            if (password.length < 8) throw new ValidationError('invalid password min length')
-            if (password.length > 20) throw new ValidationError('invalid password max length')
-        },
-    
-        userId(userId) {
-            if (typeof userId !== 'string') throw new ValidationError('invalid userId type')
-            if (userId.length !== 24) throw new ValidationError('invalid userId length')
-        },
-    */
+    section(section) {
+        if (typeof section !== 'string') throw new ValidationError('invalid section type')
+        if (section !== 'pacient' && section !== 'doctor') throw new ValidationError('invalid section is neither pacient nor doctor')
+    },
+    field(field) {
+        if (typeof field !== 'string') throw new ValidationError('invalid field type')
+        if (field.length > 35) throw new ValidationError('invalid field min length')
+    },
+    value(value) {
+        if (typeof value !== 'string') throw new ValidationError('invalid value type')
+        if (value.length > 30) throw new ValidationError('invalid value max length')
+    },
+
 }

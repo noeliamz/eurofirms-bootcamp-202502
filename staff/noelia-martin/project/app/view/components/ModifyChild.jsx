@@ -28,20 +28,26 @@ export const ModifyChild = () => {
         //Almacena el token que utilizará segun el role logueado, si es doctor idPacient y si es paciente lo deja indefined ya que en la lógica está configurado que si no se indica token utiliza por defecto el almacenado en SessionStorage
         const token = isDoctor ? data.idPacient : undefined
 
-        //Llama a lógica editChild indicando sección, el campo y el valor que se van a actualizar en la base de datos
-        //De no hacerlo, supone que todo el objeto es el valor de section, dejando a field y value undefined
-        //Luego actualiza el estado del child y resetea los estados de edición.
-        logic.editChild(token, { section: currentSection, field: editField, value: editValue })
-            .then((updateChild) => {
-                setChild(updateChild)//Actualiza el child
-                alert('Campo actualizado')
-                setEditField(null) //Borra el campo que se está editando
-                setEditValue('') //Limpia el valor temporal
-            })
+        try {
+            //Llama a lógica editChild indicando sección, el campo y el valor que se van a actualizar en la base de datos
+            //De no hacerlo, supone que todo el objeto es el valor de section, dejando a field y value undefined
+            //Luego actualiza el estado del child y resetea los estados de edición.
+            logic.editChild(token, { section: currentSection, field: editField, value: editValue })
+                .then((updateChild) => {
+                    setChild(updateChild)//Actualiza el child
+                    alert('Campo actualizado')
+                    setEditField(null) //Borra el campo que se está editando
+                    setEditValue('') //Limpia el valor temporal
+                })
 
-            .catch(error => {
-                alert(error.message)
-            })
+                .catch(error => {
+                    console.error(error.message)
+                    alert(error.message)
+                })
+        } catch (error) {
+            console.error(error.message)
+            alert(error.message)
+        }
     }
 
     const handleDelete = (currentField) => { //Recibe el campo renderizado que eliminará
@@ -63,6 +69,7 @@ export const ModifyChild = () => {
                         })
 
                         .catch(error => {
+                            console.error(error.message)
                             alert(error.message)
                         })
                 }

@@ -23,7 +23,7 @@ export const UseChild = () => {
                     alert(error.message)
                 })
         } catch (error) {
-            console.error(error)
+            console.error(error.message)
             alert(error.message)
             return
         }

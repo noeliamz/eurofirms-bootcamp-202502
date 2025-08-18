@@ -1,7 +1,10 @@
 import { data } from '../data'
-import { SystemError, errors } from 'com'
+import { SystemError, errors, validate } from 'com'
 
 export const editChild = (token = data.getToken(), { section, field, value }) => {
+    validate.section(section)
+    validate.field(field)
+    validate.value(value)
 
     return fetch(import.meta.env.VITE_API_URL + '/children/edit', {
         method: 'PUT',

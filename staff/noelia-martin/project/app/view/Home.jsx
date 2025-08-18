@@ -22,7 +22,6 @@ export const Home = ({ onReturnChoosePacientClicked, onLogoutUser }) => {
                 .then(name => setName(name))
                 .catch(error => {
                     console.error(error)
-
                     alert(error.message)
                 })
 
@@ -30,13 +29,12 @@ export const Home = ({ onReturnChoosePacientClicked, onLogoutUser }) => {
                 logic.getNamePacient(data.idPacient)
                     .then(nameElected => setNameElected(nameElected))
                     .catch(error => {
-                        console.error(error)
-
+                        console.error(error.message)
                         alert(error.message)
                     })
             }
         } catch (error) {
-            console.error(error)
+            console.error(error.message)
             alert(error.message)
         }
     }, [isDoctor])//Con esta línea se indica que useEffect vuelva a ejecutarse cada vez que isDoctor cambie de valor. Es necesario ya que inicialmente isDoctor es null hasta que se ejecute el useEffect de dentro de UseChild
@@ -46,6 +44,7 @@ export const Home = ({ onReturnChoosePacientClicked, onLogoutUser }) => {
             logic.logoutUser()
             onLogoutUser()
         } catch (error) {
+            console.error(error.message)
             alert(error.message)
         }
     }

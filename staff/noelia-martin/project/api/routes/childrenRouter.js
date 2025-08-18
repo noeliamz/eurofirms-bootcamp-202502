@@ -9,11 +9,6 @@ const { JWT_SECRET } = process.env
 
 export const childrenRouter = Router()
 
-childrenRouter.use((request, response, next) => {
-    console.log(`📡 ${request.method} ${request.originalUrl}`)
-    next()
-})
-
 childrenRouter.get('/', (request, response, next) => {
     try {
         const authorization = request.headers.authorization
